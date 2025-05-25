@@ -8,7 +8,7 @@ const ProductosPage = () => {
   const [productos, setProductos] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
-    desciption: '',
+    description: '',
     price: '',
     stock: ''
   });
@@ -115,7 +115,7 @@ const ProductosPage = () => {
   const startEdit = (producto) => {
     setFormData({
       name: producto.name,
-      desciption: producto.desciption || '',
+      description: producto.description || '',
       price: producto.price,
       stock: producto.stock
     });
@@ -151,7 +151,7 @@ const ProductosPage = () => {
   const resetForm = () => {
     setFormData({
       name: '',
-      desciption: '',
+      description: '',
       price: '',
       stock: ''
     });
@@ -196,8 +196,8 @@ const ProductosPage = () => {
             <div className="form-group">
               <label>Descripción</label>
               <textarea
-                name="desciption"
-                value={formData.desciption}
+                name="description"
+                value={formData.description}
                 onChange={handleInputChange}
               />
             </div>
@@ -247,7 +247,7 @@ const ProductosPage = () => {
             {productos.map((producto) => (
               <tr key={producto._id}>
                 <td>{producto.name}</td>
-                <td>{producto.desciption}</td>
+                <td>{producto.description}</td>
                 <td>${producto.price}</td>
                 <td>{producto.stock}</td>
                 <td>

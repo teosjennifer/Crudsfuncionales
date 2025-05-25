@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Componentes
@@ -6,38 +6,24 @@ import Sidebar from './components/Sidebar';
 
 // Páginas
 import ProductosPage from './pages/productos/ProductosPage';
-import EmpleadosPage from './pages/empleados/EmpleadosPage';
-import ClientesPage from './pages/clientes/ClientesPage';
+import BranchesPage from './pages/branches/BranchesPage';
+import ProvidersPage from './pages/providers/ProvidersPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('productos');
-
-  // Función para cambiar de página
-  const navigateTo = (page) => {
-    setCurrentPage(page);
-  };
-
-  // Renderizar la página actual
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'productos':
-        return <ProductosPage />;
-      case 'empleados':
-        return <EmpleadosPage />;
-      case 'clientes':
-        return <ClientesPage />;
-      default:
-        return <ProductosPage />;
-    }
-  };
-
   return (
-    <div className="app-container">
-      <Sidebar onNavigate={navigateTo} currentPage={currentPage} />
-      <div className="content">
-        {renderPage()}
+    <Router>
+      <div className="app-container">
+        <Sidebar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<ProductosPage />} />
+            <Route path="/productos" element={<ProductosPage />} />
+            <Route path="/clientes" element={<BranchesPage />} />
+            <Route path="/proveedores" element={<ProvidersPage />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 

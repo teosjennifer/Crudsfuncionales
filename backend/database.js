@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // 1- Configuro la URI o dirección de la base de datos
-const URI = "mongodb://127.0.0.1:27017/ZonaDigitalDB20170508";
+//const URI = "mongodb://127.0.0.1:27017/ZonaDigitalDB20170508";
 
 // 2- Conecto la base de datos con opciones para mayor compatibilidad
 mongoose.connect(URI, {

@@ -1,6 +1,9 @@
 import '../styles/Sidebar.css';
+import { Link, useLocation } from 'react-router-dom';
 
-const Sidebar = ({ onNavigate, currentPage }) => {
+const Sidebar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
   return (
     <div className="sidebar">
       <div className="title">
@@ -9,31 +12,28 @@ const Sidebar = ({ onNavigate, currentPage }) => {
       <nav>
         <ul>
           <li>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); onNavigate('empleados'); }}
-              className={currentPage === 'empleados' ? 'active' : ''}
-            >
-              👥 Empleados
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); onNavigate('productos'); }}
-              className={currentPage === 'productos' ? 'active' : ''}
-            >
-              📦 Productos
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); onNavigate('clientes'); }}
-              className={currentPage === 'clientes' ? 'active' : ''}
+            <Link 
+              to="/clientes" 
+              className={currentPath === '/clientes' ? 'active' : ''}
             >
               👤 Clientes
-            </a>
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/productos" 
+              className={currentPath === '/productos' || currentPath === '/' ? 'active' : ''}
+            >
+              📦 Productos
+            </Link>
+          </li>
+          <li>
+            <Link 
+              to="/proveedores" 
+              className={currentPath === '/proveedores' ? 'active' : ''}
+            >
+              👳‍♂️ Proveedores
+            </Link>
           </li>
 
         </ul>

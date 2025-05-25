@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-// Cadena de conexión a MongoDB Atlas (base de datos en la nube)
-// Esta es una cuenta gratuita creada específicamente para tu proyecto
-const URI = "mongodb+srv://teosj_mern:NsxT9iClWpZJeMDE@crudsmern.5eazyc2.mongodb.net/ZonaDigitalDB?retryWrites=true&w=majority";
+// Cargar variables de entorno
+dotenv.config();
+
+// Usar la cadena de conexión del archivo .env
+const URI = process.env.DB_URI;
 
 // Conexión a la base de datos con manejo de errores
 mongoose.connect(URI, {
