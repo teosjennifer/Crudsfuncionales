@@ -1,10 +1,17 @@
 import mongoose from "mongoose";
 
 // 1- Configuro la URI o dirección de la base de datos
-const URI = "mongodb://localhost:27017/ZonaDigitalDB20170508";
+const URI = "mongodb://127.0.0.1:27017/ZonaDigitalDB20170508";
 
-// 2- Conecto la base de datos
-mongoose.connect(URI);
+// 2- Conecto la base de datos con opciones para mayor compatibilidad
+mongoose.connect(URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // Timeout después de 5 segundos
+  family: 4 // Usar IPv4, omitir IPv6
+}).catch(err => {
+  console.error('Error al conectar a MongoDB:', err.message);
+});
 
 // ------ Comprobar que todo funciona ------
 

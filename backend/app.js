@@ -11,9 +11,19 @@ import logoutRoutes from "./src/routes/logout.js";
 import registerClientRoutes from "./src/routes/registerClients.js";
 import recoveryPasswordRoutes from "./src/routes/recoveryPassword.js";
 import providersRoutes from "./src/routes/providers.js";
+import testRoutes from "./src/routes/test.js";
+import cors from "cors";
 
 // Creo una constante que es igual a la libreria que importé
 const app = express();
+
+// Configuración de CORS para permitir peticiones desde cualquier origen
+app.use(cors({
+  origin: '*', // Permitir peticiones desde cualquier origen
+  credentials: true, // Permitir cookies en las peticiones
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
+}));
 
 //Que acepte datos en json
 app.use(express.json());
@@ -35,6 +45,9 @@ app.use("/api/registerClients", registerClientRoutes);
 app.use("/api/recoveryPassword", recoveryPasswordRoutes);
 
 app.use("/api/providers", providersRoutes);
+
+// Ruta de prueba para diagnosticar problemas de conexión
+app.use("/api", testRoutes);
 
 // Exporto la constante para poder usar express en otros archivos
 export default app;

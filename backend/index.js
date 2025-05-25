@@ -1,6 +1,7 @@
 // importo el archivo app.js
 import app from "./app.js";
-import "./database.js";
+// Usar MongoDB Atlas en lugar de la conexión local
+import "./database_atlas.js";
 
 // Creo una función
 // que se encarga de ejecutar el servidor
